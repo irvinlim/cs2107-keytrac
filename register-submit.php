@@ -15,7 +15,7 @@ if (!$config['keytrac_auth_token'])
   die('No KeyTrac auth_token defined');
 if (!$config['mysql_host'] || !$config['mysql_user'] || !$config['mysql_pass'] || !$config['mysql_db'])
   die('No MySQL config details defined');
-if (!$config['random_salt'])
+if (!$config['random_salt'] || strlen($config['random_salt']) <= 0)
   die('No random salt defined.');
 
 // Setup PDO
