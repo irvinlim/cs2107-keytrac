@@ -1,0 +1,7 @@
+config.php
+
+###Composer###
+
+composer.phar
+vendor/
+composer.lock

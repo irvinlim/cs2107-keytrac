@@ -1,0 +1,5 @@
+.container { padding: 20px 0; }
+.row { margin: 0 auto 10px; }
+.header.row { margin: 0 auto 30px; }
+
+.untyped { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
