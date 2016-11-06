@@ -41,8 +41,13 @@
       <div class="row">
         <div class="large-12 columns">
           <div class="callout">
-            <h3>Login to your AmazingWebServices console</h3>
-            
+            <div class="row align-center">
+              <div class="columns large-12" style="text-align: center;">
+                <h3>Login to your AmazingWebServices console</h3>
+                <p>This is a demo website to demonstrate how 3FA using keystroke biometrics can be implemented on an online service.</p>
+              </div>
+            </div>
+
             <div class="row align-center">
               <div class="columns large-6">
                 <form action="index.php" method="post" onsubmit="onSubmit()">

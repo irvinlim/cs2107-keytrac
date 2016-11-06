@@ -27,12 +27,16 @@
 
       <div class="row">
         <div class="large-12 columns">
+      
+          <p style="text-align: left;"><a href="index.php">&laquo; Back to home</a></p>
+
           <div class="callout">
-            <p style="float: right;">
-              <a href="index.php">Back to home</a>
-            </p>
-            <h3>Register for AmazingWebServices</h3>
-            <p>Thank you for choosing AmazingWebServices. We promise you that we are amazing!</p>
+            <div class="row align-center">
+              <div class="columns" style="text-align: center;">
+                <h3>Register for AmazingWebServices</h3>
+                <p>Thank you for choosing AmazingWebServices. We promise you that we are amazing!</p>
+              </div>
+            </div>
             
             <div class="row align-center">
               <div class="columns medium-10 large-8">
