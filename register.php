@@ -1,4 +1,8 @@
-<?php include("header.php") ?>
+<?php 
+require_once("imports/imports.php");
+include("header.php");
+
+global $security_questions; ?>
 
 <div class="row">
   <div class="large-12 columns">
@@ -61,12 +65,9 @@
                 <label>Security Question 1</label>
                 <select name="security_qn_1" id="security_qn_1" required>
                   <option>Choose a security question...</option>
-                  <option value="1">What is the first and last name of your first boyfriend or girlfriend?</option>
-                  <option value="2">Which phone number do you remember most from your childhood?</option>
-                  <option value="3">What was your favorite place to visit as a child?</option>
-                  <option value="4">Who is your favorite actor, musician, or artist?</option>
-                  <option value="5">What is your favorite movie?</option>
-                  <option value="6">What was the make of your second car?</option>
+                  <?php foreach ($security_questions[0] as $key => $qn) : ?>
+                    <option value="<?=$key?>"><?=$qn?></option>
+                  <?php endforeach; ?>
                 </select>
                 <input type="text" name="security_ans_1" placeholder="Your answer..." />
               </div>
@@ -74,12 +75,9 @@
                 <label>Security Question 2</label>
                 <select name="security_qn_2" id="security_qn_2" required>
                   <option>Choose a security question...</option>
-                  <option value="1">What is the last name of the teacher who gave you your first failing grade?</option>
-                  <option value="2">What was the name of the boy/girl you had your second kiss with?</option>
-                  <option value="3">Where were you when you had your first alcoholic drink (or cigarette)?</option>
-                  <option value="4">Where were you when you had your first kiss?</option>
-                  <option value="5">What was the name of your second pet?</option>
-                  <option value="6">What was the name of your elementary school?</option>
+                  <?php foreach ($security_questions[1] as $key => $qn) : ?>
+                    <option value="<?=$key?>"><?=$qn?></option>
+                  <?php endforeach; ?>
                 </select>
                 <input type="text" name="security_ans_2" placeholder="Your answer..." />
               </div>
