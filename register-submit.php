@@ -1,46 +1,13 @@
 <?php
 
+require_once('imports/imports.php');
 require('vendor/nategood/httpful/bootstrap.php');
-require('config.php');
 
-global $config;
+global $config, $db;
 
-function redirect($url) {
-  header('Location: ' . $url);
-  die();
-}
-
-// Check for config
+// Check for API token
 if (!$config['keytrac_auth_token'])
   die('No KeyTrac auth_token defined');
-if (!$config['mysql_host'] || !$config['mysql_user'] || !$config['mysql_pass'] || !$config['mysql_db'])
-  die('No MySQL config details defined');
-if (!$config['random_salt'] || strlen($config['random_salt']) <= 0)
-  die('No random salt defined.');
-
-// Setup PDO
-try {
-  $servername = $config['mysql_host'];
-  $dbname = $config['mysql_db'];
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $config['mysql_user'], $config['mysql_pass']);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  // Set up table if it doesn't exist
-  $result = $conn->query("
-    CREATE TABLE IF NOT EXISTS users
-    ( email           VARCHAR(255),
-      password        VARCHAR(255),
-      mobile          INTEGER,
-      security_qn_1   INTEGER,
-      security_ans_1  VARCHAR(255),
-      security_qn_2   INTEGER,
-      security_ans_2  VARCHAR(255),
-      keytrac_user_id VARCHAR(255),
-      CONSTRAINT pk_email PRIMARY KEY (email) )
-    ");
-} catch(PDOException $e) {
-  die("Error: " . $e->getMessage());
-}
 
 // Check for $_POST
 $requiredFields = [
@@ -59,6 +26,7 @@ foreach ($requiredFields as $field) {
 
 if ($_POST['password'] != $_POST['password2'])
   redirect("register.php?error=Password%20mismatch%2E");
+
 
 // Register new user
 $registerResponse = \Httpful\Request::post("https://api.keytrac.net/users")
@@ -89,7 +57,9 @@ if (!$enrolResponse->body->OK)
 
 // Save to database
 try {
-  $stmt = $conn->prepare(
+  global $db;
+
+  $stmt = $db->prepare(
     "INSERT INTO users (email, password, mobile, security_qn_1, security_ans_1, security_qn_2, security_ans_2, keytrac_user_id) 
      VALUES (:email, :password, :mobile, :security_qn_1, :security_ans_1, :security_qn_2, :security_ans_2, :keytrac_user_id)"
   );
@@ -108,7 +78,7 @@ try {
 }
 
 // Close connection.
-$conn = null;
+$db = null;
 
 // Redirect to home.
 redirect("index.php?registered=1");
