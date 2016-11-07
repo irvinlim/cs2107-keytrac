@@ -65,12 +65,12 @@ try {
   );
 
   $stmt->bindParam(':email', $_POST['email']);
-  $stmt->bindParam(':password', md5($config['random_salt'] . $_POST['password']));
+  $stmt->bindParam(':password', md5salt($_POST['password']));
   $stmt->bindParam(':mobile', intval($_POST['mobile']));
   $stmt->bindParam(':security_qn_1', intval($_POST['security_qn_1']));
-  $stmt->bindParam(':security_ans_1', md5($config['random_salt'] . $_POST['security_ans_1']));
+  $stmt->bindParam(':security_ans_1', md5salt($_POST['security_ans_1']));
   $stmt->bindParam(':security_qn_2', intval($_POST['security_qn_2']));
-  $stmt->bindParam(':security_ans_2', md5($config['random_salt'] . $_POST['security_ans_2']));
+  $stmt->bindParam(':security_ans_2', md5salt($_POST['security_ans_2']));
   $stmt->bindParam(':keytrac_user_id', $keytracUserId);
   $stmt->execute();
 } catch (PDOException $e) {
