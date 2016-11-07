@@ -85,7 +85,7 @@ global $security_questions; ?>
             <div class="row align-justify">
               <div class="large-12 columns">
                 <h4>Keystroke Biometrics</h4>
-                <p>Please enter the following text in the text box below. We will be recording your keystroke patterns only in the following box in order to secure your account further.</p>
+                <p>Please enter the following text in the text box below as how you would normally type. We will be recording your keystroke patterns only in the following box in order to secure your account further.</p>
                 <p>Your keystrokes will be used as a challenge in the event you have forgotten your password.</p>
               </div>
             </div>
