@@ -18,6 +18,12 @@ global $security_questions; ?>
 
     <p style="text-align: left;"><a href="index.php">&laquo; Back to home</a></p>
 
+    <?php if ($_GET['error']) : ?>
+      <div class="callout warning" style="text-align: center;">
+        <?=filter_var($_GET['error'], FILTER_SANITIZE_STRING)?>
+      </div>
+    <?php endif; ?>
+
     <div class="callout">
       <div class="row align-center">
         <div class="columns" style="text-align: center;">
