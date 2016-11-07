@@ -28,13 +28,27 @@ if ($_POST['password'] != $_POST['password2'])
   redirect("register.php?error=Password%20mismatch%2E");
 
 
-// Register new user
-$registerResponse = \Httpful\Request::post("https://api.keytrac.net/users")
-  ->addHeader('Authorization', $config['keytrac_auth_token'])
-  ->send();
+// Check email if already exists.
+if (getDbRow('email', $_POST['email']))
+  redirect("register.php?error=Email%20already%20exists%2E");
 
-$keytracUserId = $registerResponse->body->id;
-$keytracUserId = 'fc26cf1c-b2db-457c-977b-d2ffb63754cd'; // TEMP
+
+// Use existing user if not already enrolled
+$existingUserCanBeUsed = false;
+if ($config['keytrac_existing_user'] && !getDbRow('keytrac_user_id', $config['keytrac_existing_user']))
+  $existingUserCanBeUsed = true;
+
+
+// Register new user if we cannot use the existing user.
+if (!$existingUserCanBeUsed) {
+  $registerResponse = \Httpful\Request::post("https://api.keytrac.net/users")
+    ->addHeader('Authorization', $config['keytrac_auth_token'])
+    ->send();
+
+  $keytracUserId = $registerResponse->body->id;
+} else {
+  $keytracUserId = $config['keytrac_existing_user'];
+}
 
 if (!$keytracUserId)
   die("Could not register user. Server response is below.<br><br><pre>" . $registerResponse . "</pre>");
