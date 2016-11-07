@@ -34,6 +34,8 @@ global $security_questions;
 
     <form action="forgot3.php" method="post" onsubmit="onSubmit()">
 
+      <input type="hidden" name="email" value="<?=$user['email']?>">
+
       <div class="callout">
         <div class="row align-center">
           <div class="columns" style="text-align: center;">
@@ -112,7 +114,7 @@ global $security_questions;
             <div class="row align-justify">
               <div class="large-12 columns">
                 <div class="callout secondary untyped">
-                  <p>With no dorm and no desire to return to New York, Stallman followed a path blazed by Greenblatt, Gosper, Sussman, and the many other hackers before him.</p>
+                  <p>She had a sister married to a Mr. Phillips, who had been a clerk to their father and succeeded him in the business.</p>
                 </div>
               </div>
             </div>
@@ -124,7 +126,7 @@ global $security_questions;
             <div class="row align-justify">
               <div class="large-12 columns">
                 <div class="callout secondary untyped">
-                  <p>Proponents of software copyright had their counter-arguments: without copyright, works might otherwise slip into the public domain.</p>
+                  <p>All the time he lived with us the captain made no change whatever in his dress but to buy some stockings from a hawker.</p>
                 </div>
               </div>
             </div>
