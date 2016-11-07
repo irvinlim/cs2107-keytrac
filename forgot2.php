@@ -5,7 +5,7 @@ require_once("imports/imports.php");
 if (!$_POST['email'] || strlen($_POST['email']) <= 0)
   redirect("index.php");
 
-$user = getDbRow('email', $_POST['email']);
+$user = getRowByEmail($_POST['email']);
 
 if (!$user) 
   redirect("forgot.php?error=Invalid%20user%2E");

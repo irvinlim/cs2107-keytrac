@@ -29,13 +29,15 @@ if ($_POST['password'] != $_POST['password2'])
 
 
 // Check email if already exists.
-if (getDbRow('email', $_POST['email']))
+$existingUser = getRowByEmail($_POST['email']);
+
+if ($existingUser)
   redirect("register.php?error=Email%20already%20exists%2E");
 
 
 // Use existing user if not already enrolled
 $existingUserCanBeUsed = false;
-if ($config['keytrac_existing_user'] && !getDbRow('keytrac_user_id', $config['keytrac_existing_user']))
+if ($config['keytrac_existing_user'] && !getRowByKeytracUserId($config['keytrac_existing_user']))
   $existingUserCanBeUsed = true;
 
 

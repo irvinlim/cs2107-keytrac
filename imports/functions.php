@@ -11,18 +11,33 @@ function md5salt($string) {
   return md5($config['random_salt'] . $string);
 }
 
-function getDbRow($key, $value) {
+function getRowByEmail($email) {
   try {
     global $db;
 
-    $stmt = $db->prepare("SELECT * FROM users WHERE :key = :value");
-    $stmt->bindParam(":key", $key);
-    $stmt->bindParam(":value", $value);
+    $stmt = $db->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->bindParam(":email", $email);
     $stmt->execute();
 
     $row = $stmt->fetch();
 
-    return $row ?: null;
+    return $row;
+  } catch (PDOException $e) {
+    die("PDO Error: <br><br><pre>" . $e->getMessage() . "</pre>");
+  }
+}
+
+function getRowByKeytracUserId($keytracUserId) {
+  try {
+    global $db;
+
+    $stmt = $db->prepare("SELECT * FROM users WHERE keytrac_user_id = :keytracUserId");
+    $stmt->bindParam(":keytracUserId", $keytracUserId);
+    $stmt->execute();
+
+    $row = $stmt->fetch();
+
+    return $row;
   } catch (PDOException $e) {
     die("PDO Error: <br><br><pre>" . $e->getMessage() . "</pre>");
   }

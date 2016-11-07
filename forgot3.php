@@ -17,7 +17,7 @@ foreach ($requiredFields as $field) {
     $_POST[$field] = trim($_POST[$field]);
 }
 
-$user = getDbRow('email', $_POST['email']);
+$user = getRowByEmail($_POST['email']);
 
 if (!$user) 
   redirect("forgot.php?error=Invalid%20user%2E");
