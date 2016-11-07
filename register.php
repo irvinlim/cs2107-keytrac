@@ -6,7 +6,7 @@ global $security_questions; ?>
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout success">
+    <div class="callout secondary">
       <h5>DEMO NOTE</h5>
       <p>Typically, the sign up form should not be so long (principle of psychological acceptability), but for the purposes of this demo, we enforce all three factors of verification at this step.</p>
     </div>
@@ -18,7 +18,7 @@ global $security_questions; ?>
 
     <p style="text-align: left;"><a href="index.php">&laquo; Back to home</a></p>
 
-    <?php if ($_GET['error']) : ?>
+    <?php if (isset($_GET['error'])) : ?>
       <div class="callout warning" style="text-align: center;">
         <?=filter_var($_GET['error'], FILTER_SANITIZE_STRING)?>
       </div>

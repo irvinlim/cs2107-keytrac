@@ -3,7 +3,7 @@
 <?php if ($_GET['registered']) : ?>
   <div class="row">
     <div class="large-12 columns">
-      <div class="callout secondary">
+      <div class="callout success" style="text-align: center;">
         <p>Successfully registered!</p>
       </div>
     </div>
@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <div class="callout success">
+    <div class="callout secondary">
       <h5>DEMO NOTE</h5>
       <p>
         For the 3FA demo, please click <strong>"sign up"</strong> to register an account to register your details, 

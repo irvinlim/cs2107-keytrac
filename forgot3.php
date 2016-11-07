@@ -8,11 +8,11 @@ $requiredFields = [
 ];
 
 if (!$_POST) 
-  redirect('index.php');
+  redirect('forgot.php');
 
 foreach ($requiredFields as $field) {
   if (!$_POST[$field] || strlen($_POST[$field]) <= 0)
-    redirect('index.php');
+    redirect('forgot.php');
   else 
     $_POST[$field] = trim($_POST[$field]);
 }
