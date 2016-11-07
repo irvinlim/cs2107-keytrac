@@ -97,6 +97,8 @@ global $security_questions;
                 <hr>
                 <p>Your keystrokes recorded earlier in the registration will be used to verify against your identity using the KeyTrac API. A 70% match or higher is sufficient to prove that you are the same person.</p>
                 <p>Please key in the text below as how you normally type.</p>
+                <hr>
+                <p class="help-text">Please enter the text shown, as there is a limitation with the KeyTrac API such that we are unable to verify if the keystroke signature decodes to the same string, without doing additional work.</p>
               </div>
             </div>
             <div class="row align-justify">
